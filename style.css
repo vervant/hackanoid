@@ -6,26 +6,38 @@
 body{
 	background-color: #efefef;
 	margin: 0px;
-    /* width:100wv; 
-    height:100hv; */
+width:100wv; 
+    height:100hv;
+    position:fixed;
 }
 #canvas{
 	background: rgb(146,161,102);
 background: linear-gradient(90deg, rgba(146,161,102,1) 0%, rgba(171,187,123,1) 35%, rgba(132,144,96,1) 100%);
-    margin-left:20px;
-    margin-top:20px
+margin-left:20px;
+margin-top:20px;
 
 }
+.screen-wrapper {
+  
+  background-color: #bdbdbd;
+  border: var(--border-width) solid var(--main-border-color);
+  border-radius: 10px;
+  border-bottom-right-radius: 50px;
+  height: 328px;
+  margin: 13px auto;
+  width: 422px;
+}
 
-#dialog{
+
+
+#dialog {
+  z-index:999;
 width: 380px;
 height:280px;
 margin-left:auto;
 margin-right:auto;
-/* top: 50%;
-left: 50%;
-transform: translate(-50%, -50%); */
-z-index: 9999; 
+margin-left:20px;
+margin-top:20px;
 background: rgb(146,161,102);
 background: linear-gradient(90deg, rgba(146,161,102,1) 0%, rgba(171,187,123,1) 35%, rgba(132,144,96,1) 100%);
 }
@@ -53,10 +65,32 @@ position:relative;
 
 }
 
+#out {
+ width: 380px;
+height:280px;
+margin-left:20px;
+margin-top:20px;
+  font-family: 'Press';
+  color: #262626;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bolder;
+  display:block;
+  padding-top:30px;
+  background: rgb(146,161,102);
+  background: linear-gradient(90deg, rgba(146,161,102,1) 0%, rgba(171,187,123,1) 35%, rgba(132,144,96,1) 100%);
+}
+
+#out h2{
+  font-size:40px;
+  padding-top:40px;
+}
+
 /**/
 :root {
     --main-border-color: #6b6b6b;
-    --border-width: 4px;
+    --border-width: 1px;
   }
   
   * {
@@ -68,7 +102,7 @@ position:relative;
   .wrapper {
     align-items: center;
     display: flex;
-    height: 100vh;
+    height: 170%;
     justify-content: center;
     width: 100vw;
   }
@@ -114,15 +148,7 @@ position:relative;
   }
   
   
-  .screen-wrapper {
-    background-color: #bdbdbd;
-    border: var(--border-width) solid var(--main-border-color);
-    border-radius: 10px;
-    border-bottom-right-radius: 50px;
-    height: 328px;
-    margin: 13px auto;
-    width: 422px;
-  }
+ 
   
   .screen-wrapper-top {
     align-items: center;
@@ -373,6 +399,18 @@ position:relative;
     height: 22px;
     transform: rotate(-35deg);
     width: 60px;
+   
+  }
+  .start-button p {
+    font-family:'arial' , 'sans-serif';
+    font-size:0.7rem;
+    translate: 15% -170%;
+  }
+
+  .select-button p {
+    font-family:'arial' , 'sans-serif';
+    font-size:0.7rem;
+    translate: 15% -170%;
   }
   
   .bottom-wrapper {
@@ -437,5 +475,8 @@ position:relative;
     width: 8px;
   }
 
-
-
+  
+ .hidden  {
+    display: none;
+  }
+  

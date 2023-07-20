@@ -9,48 +9,51 @@
     <body>
 
 
-        <div id="dialog"> 
-            
-            <img id="mymodal" src="asset/Images/hackanoid-title-final.png" />
-            <a id="start" href="#" >PRESS START</a>
-
-        <div id="countdown"><i>Let's go!!</i></div>
-
-           
-        </divid>
-		
-        <!-- <dialog id="mymodal"> 
-            <img src ="asset/Images/hackanoid-title-final.png">
-            <a id="start" href="#" onclick="start()">PRESS START</a>
-
-           
+      
+      
+      <!-- <dialog id="mymodal"> 
+        <img src ="asset/Images/hackanoid-title-final.png">
+        <a id="start" href="#" onclick="start()">PRESS START</a>
         
-
-		<div id="out"></div>
-        </dialog> -->
-		
-
-
-
-<div class='wrapper'>
-    <div class='border'>
-      <div class='top'>
-        <div class='top-center'>
-          <div class='top-center-lines'></div>
-          <div class='top-center-solid'></div>
-        </div>
-      </div>
-      <div class='screen-wrapper'>
-        <canvas id="canvas"></canvas>
-
-        <div class='screen-wrapper-top'>
-          <div class='screen-wrapper-top-left'>
+      </dialog> -->
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class='wrapper'>
+        <div class='border'>
+          <div class='top'>
+            <div class='top-center'>
+              <div class='top-center-lines'></div>
+              <div class='top-center-solid'></div>
+            </div>
           </div>
-          <div class='screen-wrapper-top-middle'>
+          <div class='screen-wrapper'>
+            <div class='screen-wrapper-in'></div>
+            <div id="dialog"> 
+                
+                <img id="mymodal" src="asset/Images/hackanoid-title-final.png" />
+                <a id="start" href="#" >PRESS START</a>
+          
+            <div id="countdown"><i>Let's go!!</i></div>
+          
+            </div>
+            
+            <canvas id="canvas" class="hidden"></canvas>
+            <div id="out" class="hidden"> </div>
+          
+            <div class='screen-wrapper-top'>
+              <div class='screen-wrapper-top-left'>
+              </div>
+              <div class='screen-wrapper-top-middle'>
 
-          </div>
-          <div class='screen-wrapper-top-right'></div>
-        </div>
+              </div>
+              <div class='screen-wrapper-top-right'></div>
+            </div>
         <div class='screen-wrapper-bottom'>
           <div class='screen-wrapper-bottom-left'>
             <div class='screen-wrapper-bottom-left-circle'></div>
@@ -95,8 +98,8 @@
         </div>
       </div>
       <div class='start-select-buttons-wrapper'>
-        <div class='start-button'></div>
-        <div class='select-button'></div>
+        <div class='start-button'><p>SELECT</p></div>
+        <div class='select-button'><p>START</p></div>
       </div>
       <div class='bottom-wrapper'>
         <div class='bottom-wrapper-solid'></div>
@@ -116,5 +119,9 @@
     </div>
   </div>
 
+<audio id="gameovermusic" src="asset/Music/gameover.mp3"></audio>
+<audio id="blockcrushmusic" src="asset/Music/blockCrush.mp3"></audio>
+<audio id="clickMusic" src="asset/Music/click.mp3"></audio>
+<audio id="soundtrack" src="asset/Music/soundtrack.mp3"></audio>
 </body>
 </html>
