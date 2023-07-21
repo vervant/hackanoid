@@ -7,6 +7,7 @@ const gameOverSound = document.getElementById("gameovermusic");
 const blockCrushSound = document.getElementById("blockcrushmusic");
 const soundTrackSound = document.getElementById("soundtrack");
 const clickSound = document.getElementById("clickMusic");
+let animID = null;
 
 out.style.display = "none";
 
@@ -17,7 +18,7 @@ let player = new Player(200, 380, 55, 15);
 let ball = new Ball(
   200,
   200,
-  10,
+
   Math.floor(Math.random() * 4 + 4),
   Math.floor(Math.random() * 4 + 4)
 );
@@ -65,6 +66,7 @@ function Player(x, y, width, height) {
 
 // Game loop function
 function start() {
+  console.log(ball.dx, ball.dy);
   checkKeyboardStatus();
   checkPlayer_BoundsCollision();
   checkBall_PlayerCollision();
@@ -87,7 +89,7 @@ function start() {
   }
 
   if (!gameOver) {
-    requestAnimationFrame(start);
+    animID = requestAnimationFrame(start);
     soundTrackMusic();
   } else {
     soundTrackSound.pause();
@@ -207,19 +209,28 @@ function clickSoundMusic() {
   clickSound.play();
 }
 function checkBall_PlayerCollision() {
-  let ax1 = player.x;
-  let ay1 = player.y;
-  let ax2 = player.x + player.width;
-  let ay2 = player.y + player.height;
-  let bx1 = ball.x - ball.size;
-  let bx2 = ball.x + ball.size;
-  let by2 = ball.y + ball.size;
-  let by1 = ball.y + ball.size;
-  if (!(ax2 <= bx1 || bx2 <= ax1 || ay2 <= by1 || by2 <= ay1)) {
+  let playerLeft = player.x;
+  let playerTop = player.y;
+  let playerRight = player.x + player.width;
+  let playerBottom = player.y + player.height;
+  let ballLeft = ball.x - ball.size;
+  let ballRight = ball.x + ball.size + 10;
+  let ballTop = ball.y - ball.size;
+  let ballBottom = ball.y + ball.size + 10;
+
+  const isInX = ballLeft < playerRight && ballRight > playerLeft;
+  const isInY = ballBottom > playerTop && ballTop < playerBottom;
+
+  if (isInX && isInY) {
     ball.dy = -ball.dy;
     clickSoundMusic();
     return;
   }
+  // if (!(ax2 <= bx1 || bx2 <= ax1 || ay2 <= by1 || by2 <= ay1)) {
+  //   ball.dy = -ball.dy;
+  //   clickSoundMusic();
+  //   return;
+  // }
 }
 
 // Check the keyboard status and update player velocity accordingly
@@ -326,22 +337,19 @@ function checkWinner() {
   }
 }
 
-// Restart the game
-// function restart() {
-//   out.innerHTML = "";
-//   gameOver = false;
-//   loadMap();
-//   ball = new Ball(200, 200, 5, Math.floor(Math.random() * 4 + 4));
-//   player = new Player(200, 380, 55, 15);
-//   start();
-// }
-
 function restart() {
+  cancelAnimationFrame(animID);
   out.style.display = "none"; // Hide the #out element before restarting
   out.innerHTML = "";
   gameOver = false;
   loadMap();
-  ball = new Ball(200, 200, 5, Math.floor(Math.random() * 4 + 4));
+  ball = new Ball(
+    200,
+    200,
+
+    Math.floor(Math.random() * 4 + 4),
+    Math.floor(Math.random() * 4 + 4)
+  );
   player = new Player(200, 380, 55, 15);
   start();
 }
@@ -392,10 +400,20 @@ if (start) {
   });
 }
 
-// let outShow = out.classList.remove("hidden")
-// if (!gameOver){
-//   outShow = true
-// }else{
+const leftButton = document.querySelector(".direction-pad-center-left");
+const rightButton = document.querySelector(".direction-pad-center-right");
 
-// }
-// console.log(outShow)
+leftButton.addEventListener("touchstart", () => {
+  aKeyDown = true;
+});
+leftButton.addEventListener("touchend", () => {
+  aKeyDown = false;
+});
+
+// Event listener for the right button
+rightButton.addEventListener("touchstart", () => {
+  dKeyDown = true;
+});
+rightButton.addEventListener("touchend", () => {
+  dKeyDown = false;
+});
