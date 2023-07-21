@@ -1,3 +1,3 @@
 # hackanoid
-This is an adpation of Arckanoid developped under JS in a gameboy one mode. 
+This is an adaption of Arckanoid developed under JS in a Gameboy one style. 
 
